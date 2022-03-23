@@ -1,0 +1,17 @@
+{
+  "name": "melitestback",
+  "version": "1.0.0",
+  "description": "Meli Test Back-end",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest ",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "node-fetch": "^3.2.3"
+  }
+  
+}
