@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   item: null,
-  searchResult: [1,2,3,4,5],
+  searchResult: null,
   status: 'idle',
 };
 
@@ -24,6 +24,7 @@ export const getItem = createAsyncThunk(
 export const searchItems = createAsyncThunk(
   'meli/searchItems',
   async (value) => {
+    console.log("Redux searching: " + value);
     const response = await fetch('http://localhost:8081/api/items?q=' + value)
     const results = await response.json();
     //console.log(item);
@@ -72,9 +73,9 @@ export const meliSlice = createSlice({
       })
       .addCase(searchItems.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.item = action.payload;
+        state.searchResult = action.payload;
         console.log("idle search");
-        //console.log(action.payload);
+        // console.log(action.payload);
       });
   },
 });
@@ -85,7 +86,8 @@ export const { increment, decrement, incrementByAmount } = meliSlice.actions;
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const selectItem = (state) => state.meli.item;
-export const searchResult = (state) => state.searchResult;
+export const searchResult = (state) => state.meli.searchResult;
+export const status = (state) => state.meli.status;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.
