@@ -22,12 +22,14 @@
 
 .buyBtn {
     width: 100%;
+    box-sizing: border-box;
     background-color: #3483FA;
     padding: 10px;    
     color: white;
 }
 
 .containerBtn {
+    box-sizing: border-box;
     padding-right: 32px;
     width: 100%;
 }

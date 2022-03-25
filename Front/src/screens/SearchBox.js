@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import {  
+  searchItems,
+} from '../features/meli/meliSlice';
 import './SearchBox.css'
 
 export function SearchBox() {
   const [ text, setText ] = useState('');
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
 
   const handlerChange = value => {
       setText(value.target.value);
   }
 
   const submit = () => {
+    dispatch(searchItems(text));
     navigate("/items?q=" + text);
   }
 

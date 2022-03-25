@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {  
   status,
   searchItems,
   searchResult,
-  meliSlice
 } from '../features/meli/meliSlice';
 import ProductCard from '../components/ProductCard';
 import { SearchBox } from './SearchBox';
@@ -21,7 +20,8 @@ export function SearchResult() {
   useEffect(() => {
     console.log(query);
     console.log("Preparando");
-    dispatch(searchItems(query)); 
+    if(stat==='idle')
+      dispatch(searchItems(query)); 
     console.log("Searching: " + query);    
   }, [query]);
 
@@ -34,7 +34,7 @@ export function SearchResult() {
       <SearchBox/>
       <div className='productsResults'>
         <div className='productsCategories'>
-        Electronica, Audio y Video > iPod > Reproductores > iPod Touch > 32 GB
+        { "Electronica, Audio y Video > iPod > Reproductores > iPod Touch > 32 GB" }
         </div>
         <div className='productsContainer'>
         { items.map( item => <ProductCard key={item.id} id={item.id} item={item}/> ) }

@@ -1,11 +1,17 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import {  
+    getItem,
+  } from '../features/meli/meliSlice';
 import './ProductCard.css';
 
 function ProductCard(props) {
     const item = props.item;
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const showProduct = () => {
+        dispatch(getItem(props.id)); 
         navigate("/items/" + props.id);
       }
 
