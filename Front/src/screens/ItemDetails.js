@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   getItem,
   selectItem,
-  meliSlice,
   status
 } from '../features/meli/meliSlice';
 import './ItemDetail.css';
@@ -32,9 +31,8 @@ export function ItemDetails() {
     console.log(item.item);
     body = <>
           <SearchBox></SearchBox>
-          <div className='container'>
-
-              <div>
+          <div className='productDetailContainer'>
+              <div className='productsCategories'>
                 Electronica, Audio y Video > iPod > Reproductores > iPod Touch > 32 GB
               </div>
               <div className='itemInfo'>
@@ -44,15 +42,18 @@ export function ItemDetails() {
                 </div>
                 <div className='divInfo'>
                   <div className='divCondition'>
-                  {item.item.condition == 'new' ? "Nuevo" : "Usado" }
-                  {item.item.sold_quantity} Vendidos
+                    {item.item.condition == 'new' ? "Nuevo - " : "Usado - " } 
+                    {item.item.sold_quantity} Vendidos
                   </div>
                   <div className='divTitle'>{item.item.title}</div> 
                   <div className='divAmount'>
                     { item.item.price.currency == 'ARS' ? "$" : 'USD'}
-                    { item.item.price.amount} {/*Aca deberia ir un servicio que muestre el cambio de moneda */}
+                    { item.item.price.amount.toLocaleString('es-AR')} {/*Aca deberia ir un servicio que muestre el cambio de moneda */}
+                    <div>{ ( "0" + item.item.decimals ).slice(-2)}</div>
                   </div>
-                  <button className='buyBtn' value='Comprar'>Comprar</button>
+                  <div className='containerBtn'>
+                    <button className='buyBtn' value='Comprar'>Comprar</button>
+                  </div>
                 </div>
               </div>
               <div className='descriptionContainer'>

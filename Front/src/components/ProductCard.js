@@ -6,10 +6,8 @@ function ProductCard(props) {
     const item = props.item;
     const navigate = useNavigate();
     const showProduct = () => {
-        //dispatch(searchItems(text)); console.log("Searching: " + text) 
         navigate("/items/" + props.id);
       }
-
 
     return (
     <div className='productPadding'>
@@ -25,7 +23,6 @@ function ProductCard(props) {
             </div>        
         </div>
     </div>
-
     )
   }
 

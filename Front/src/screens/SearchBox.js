@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './SearchBox.css'
 
 export function SearchBox() {
   const [ text, setText ] = useState('');
@@ -22,6 +23,7 @@ export function SearchBox() {
 
   return (
     <header className="App-header">
+      <div className='centerColumn'>
         <div className='App-logo' onClick={() => navigate("/")}>
             <img src='/assets/Logo_ML.png'></img>
         </div>
@@ -36,6 +38,7 @@ export function SearchBox() {
         <button  className='App-magnifying' onClick={ submit }>
             <img src='/assets/ic_Search.png'></img>
         </button >
+        </div>
     </header>
   );
 }

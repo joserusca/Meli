@@ -26,56 +26,29 @@ app.use(function (req, res, next) {
 // respond with hello world when a GET request is made to the homepage
 app.get('/', (req, res) => {
     var response = {query:"/api/items?q=:query",id:"/api/items/:id"};
-
     res.send(response);
   })
 
 app.get('/api/items', (req, res) => {
   searchItems(req.query.q)
   .then( data => res.send(data))
-  
-  //res.send("Helo " + req.query.q)
-
+  .catch( error => 
+    res.send(error)
+  ) 
 })
 
 app.get('/api/items/:id', (req, res) => {
-    //Entry point used
-    //https://api.mercadolibre.com/items/:id
-    //https://api.mercadolibre.com/items/:id/description
-
-    //Request parameters
-    // id
-
-    //Response format
-    // {
-    //     author”: {
-    //     name”: String
-    //     lastname”: String
-    //     },
-    //     item”: {
-    //     id: String,
-    //     title: String,
-    //     price: {
-    //     currency: String,
-    //     amount: Number,
-    //     decimals: Number,
-    //     },
-    //     picture”: String,
-    //     condition: String,
-    //     free_shipping: Boolean,
-    //     sold_quantity, Number
-    //     description: String
-    //     }
-    // }
-
-
+    
     var item = {};
     
       getDescription(req.params.id)
       .then( desc => {        
         getItem(req.params.id)
-        .then( data => {       
-          item = {
+        .then( data => {    
+          if(data.hasOwnProperty('error'))
+            item = data
+          else {             
+            item = {
             author: {
                 name: "Jose",
                 lastname: "Rusca"
@@ -94,31 +67,19 @@ app.get('/api/items/:id', (req, res) => {
             sold_quantity: data.sold_quantity,
             description: desc.plain_text,
             }
+           }
           }
-          // item.description = ; 
-          //console.log(item);
           res.send(item);
         })
       });
-    
-    
-    // var item = {};
-    // fetch('https://api.mercadolibre.com/items/' + req.params.id)
-    // .then(response => response.json())
-    // .then(data => item = data);
-    // res.send(data);
-
-
-
 } )
 
 
 var server = app.listen(8081, function () {
 
-    var host = server.address().address
     var port = server.address().port
 
-    console.log("Example app listening at http://%s:%s", host, port)
+    console.log("Example app listening at port ", port)
 
 })
 
@@ -141,6 +102,7 @@ async function getDescription(id) {
 async function searchItems(query) {
   var response = await fetch('https://api.mercadolibre.com/sites/MLA/search?q=' + query)  
   var data = await response.json();
+
   var result = {author: {
     name: 'Jose',
     lastname: 'Rusca'

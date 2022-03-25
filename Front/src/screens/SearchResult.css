@@ -5,6 +5,7 @@
     flex-direction: column; 
     width: 100%;
     background-color: white;
+    color: #333333;
 }
 
 .productsResults {
@@ -15,9 +16,3 @@
     width: 75%;
 }
 
-.productsCategories {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 16px;
-    margin-bottom: 16px;
-}

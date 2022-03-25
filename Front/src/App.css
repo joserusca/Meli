@@ -5,50 +5,9 @@
   width: 100%;
 }
 
-.App-logo {
-  height: 30px;
-  pointer-events: none;
-  margin-right: 15px;
-  display: flex;
-  align-items: center;
-}
-
-.App-header {
-  /* min-height: 100vh; */
-
-  width: 100%;
-  display: flex;
-  background-color: #FFE600;
-  align-items: center;
-  justify-content: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.App-magnifying {
-  background-color: #EEEEEE;
-  padding: 3px 15px 3px 15px;
-  height: 46px;
-  right: 1px;
-  border: none;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.Search-input {
-  border-width: 0px;
-  width: 60%;
-  height: 30px;
-  font-size: 18px;
-  padding: 7px 60px 9px 15px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
 *:focus {
   outline: none;
 }
-
 
 .App-body {
   flex: 11;
@@ -62,3 +21,9 @@
   color: rgb(112, 76, 182);
 }
 
+.productsCategories {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}

@@ -5,10 +5,12 @@ import {
   status,
   searchItems,
   searchResult,
+  meliSlice
 } from '../features/meli/meliSlice';
 import ProductCard from '../components/ProductCard';
 import { SearchBox } from './SearchBox';
 import './SearchResult.css';
+
 
 export function SearchResult() {
   const stat = useSelector(status);

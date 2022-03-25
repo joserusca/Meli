@@ -1,4 +1,4 @@
-.container {
+.productDetailContainer {
     display: flex;
     align-self: center;   
     flex-direction: column; 
@@ -10,7 +10,7 @@
 }
 
 .divPicture {
-    flex: 3
+    padding-right: 15px;
 }
 
 .divInfo {
@@ -23,20 +23,30 @@
 .buyBtn {
     width: 100%;
     background-color: #3483FA;
-    padding: 10px;
+    padding: 10px;    
     color: white;
+}
+
+.containerBtn {
+    padding-right: 32px;
+    width: 100%;
 }
 
 .divAmount {
     font-size: 46px;
+    padding-top: 32px;
+    padding-bottom: 32px;
 }
 
 .divCondition {
     font-size: 14px;
+    padding-top: 32px;
+    padding-bottom: 16px;
 }
 
 .divTitle {
     font-size: 24px;
+    text-align: left;
 }
 
 .divDescription {
@@ -51,10 +61,15 @@
 .itemInfo {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
+    background-color: white;
 }
 
 .descriptionContainer {    
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    background-color: white;
+    padding: 32px;
+    margin-bottom: 200px;
 }
