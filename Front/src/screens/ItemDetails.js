@@ -8,18 +8,14 @@ import {
   status
 } from '../features/meli/meliSlice';
 import './ItemDetail.css';
-//import './App.css';
+import { SearchBox } from './SearchBox';
 
 export function ItemDetails() {
   const stat = useSelector(status);
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  //dispatch(getItem('MLA1114508271'));
   useEffect(() => {
-
-    //dispatch(productActions.setActiveProduct(productId));
-    //dispatch(meliSlice.actions.setActiveProduct(id));
     console.log("Preparando");
     dispatch(getItem(id)); 
     console.log("Searching: " + id);
@@ -34,10 +30,12 @@ export function ItemDetails() {
   var body="Something";
   if( item ) {
     console.log(item.item);
-    body = <div className='container'>
+    body = <>
+          <SearchBox></SearchBox>
+          <div className='container'>
 
               <div>
-                Detalles Categorias
+                Electronica, Audio y Video > iPod > Reproductores > iPod Touch > 32 GB
               </div>
               <div className='itemInfo'>
                 <div className='divPicture'>
@@ -64,6 +62,7 @@ export function ItemDetails() {
                   </div>
               </div>
             </div>
+          </>
   }
   else
     body = <div>Id de producto incorrecto.</div>

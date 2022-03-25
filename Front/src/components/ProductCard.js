@@ -1,11 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ProductCard.css';
 
 function ProductCard(props) {
     const item = props.item;
+    const navigate = useNavigate();
+    const showProduct = () => {
+        //dispatch(searchItems(text)); console.log("Searching: " + text) 
+        navigate("/items/" + props.id);
+      }
+
+
     return (
     <div className='productPadding'>
-        <div className='productContainer'>
+        <div className='productContainer' onClick={ showProduct }>
             <div className='productImgContainer'>
                 <img className='productImg' src={item.picture}></img>
             </div>

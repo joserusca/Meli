@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  getItem,
-  searchItems,
-  selectItem,
-  searchResult,
-} from '../features/meli/meliSlice';
+import { useNavigate } from 'react-router-dom';
 
 export function SearchBox() {
   const [ text, setText ] = useState('');
-  const dispatch = useDispatch();
-  // const item = useSelector(selectItem);
-  // item ? console.log(item.item.title) : console.log("Nothing");
+  const navigate = useNavigate();
+
 
   const handlerChange = value => {
       setText(value.target.value);
-      //console.log(value.target.value);
   }
 
   const submit = () => {
-    dispatch(searchItems(text)); console.log("Searching: " + text) 
+    navigate("/items?q=" + text);
   }
 
   const pressEnter = (event) => {
@@ -30,7 +22,7 @@ export function SearchBox() {
 
   return (
     <header className="App-header">
-        <div className='App-logo'>
+        <div className='App-logo' onClick={() => navigate("/")}>
             <img src='/assets/Logo_ML.png'></img>
         </div>
         <input 

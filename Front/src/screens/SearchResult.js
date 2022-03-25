@@ -5,9 +5,9 @@ import {
   status,
   searchItems,
   searchResult,
-  getItem
 } from '../features/meli/meliSlice';
 import ProductCard from '../components/ProductCard';
+import { SearchBox } from './SearchBox';
 import './SearchResult.css';
 
 export function SearchResult() {
@@ -16,36 +16,29 @@ export function SearchResult() {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
   
-  //dispatch(getItem('MLA1114508271'));
   useEffect(() => {
-
-    //dispatch(productActions.setActiveProduct(productId));
-    //dispatch(meliSlice.actions.setActiveProduct(id));
-    
     console.log(query);
     console.log("Preparando");
     dispatch(searchItems(query)); 
-    console.log("Searching: " + query);
-    
+    console.log("Searching: " + query);    
   }, [query]);
 
   const result = useSelector(searchResult);
-  //console.log("Resultados useSelector: " + result);
-  //console.log(result ? result.items : "Nothing searched");
-
   const total = result ? result.items.length : 0; 
   const items = result ? result.items : [];
-  console.log(items);
-  return (
-    <div className='productsResults'>
-      <div className='productsCategories'>
 
-        Category 1 > Category 1.1 > Category 1.1.3
+  return (
+    <>
+      <SearchBox/>
+      <div className='productsResults'>
+        <div className='productsCategories'>
+        Electronica, Audio y Video > iPod > Reproductores > iPod Touch > 32 GB
+        </div>
+        <div className='productsContainer'>
+        { items.map( item => <ProductCard key={item.id} id={item.id} item={item}/> ) }
+        </div>
       </div>
-      <div className='productsContainer'>
-      { items.map( item => <ProductCard key={item.id} item={item}/> ) }
-      </div>
-    </div>
+    </>
   );
 }
 
