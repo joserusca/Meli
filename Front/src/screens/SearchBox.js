@@ -16,8 +16,11 @@ export function SearchBox() {
   }
 
   const submit = () => {
-    dispatch(searchItems(text));
-    navigate("/items?q=" + text);
+    if(text!=="")
+    {
+      dispatch(searchItems(text));
+      navigate("/items?q=" + text);
+    }
   }
 
   const pressEnter = (event) => {
@@ -26,11 +29,15 @@ export function SearchBox() {
       }
   }
 
+  const toHome = () => {
+    navigate("/");
+  }
+
   return (
     <header className="App-header">
       <div className='centerColumn'>
-        <div className='App-logo' onClick={() => navigate("/")}>
-            <img src='/assets/Logo_ML.png'></img>
+        <div className='App-logo' onClick={toHome}>
+            <img src='/assets/Logo_ML.png' ></img>
         </div>
         <input 
                 placeholder='Nunca dejes de buscar' 

@@ -19,7 +19,7 @@ function ProductCard(props) {
     <div className='productPadding'>
         <div className='productContainer' onClick={ showProduct }>
             <div className='productImgContainer'>
-                <img className='productImg' src={item.picture}></img>
+                <img className='productImg' alt={item.picture} src={item.picture}></img>
             </div>
             <div className='productDetail'>
                 <div className="productCurrency">{ item.price.currency === 'ARS'? "$": "USD" } { item.price.amount.toLocaleString('es-AR') }</div>            

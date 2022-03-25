@@ -13,6 +13,7 @@
     margin-right: 15px;
     display: flex;
     align-items: center;
+    pointer-events: all;
 }
 
 .App-header {

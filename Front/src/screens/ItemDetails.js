@@ -33,8 +33,16 @@ export function ItemDetails() {
                 { "Electronica, Audio y Video > iPod > Reproductores > iPod Touch > 32 GB" }
                 </div>
                 <div className='itemInfo'>
-                  <div className='divPicture'>
-                    <img className='Picture' src={item.item.picture}></img>
+                  <div className='divPanel'>
+                    <div className='divPicture'>
+                      <img className='Picture' alt={item.item.picture} src={item.item.picture}></img>
+                    </div>
+                    <div className='descriptionContainer'>
+                      <div className='divDescTittle'>Descripcion del producto</div>
+                      <div className='divDescription'>
+                        { item.item.description}
+                      </div>
+                    </div>
                   </div>
                   <div className='divInfo'>
                     <div className='divCondition'>
@@ -52,14 +60,7 @@ export function ItemDetails() {
                     </div>
                   </div>
                 </div>
-                <div className='descriptionContainer'>
-                    <div className='divDescTittle'>Descripcion del producto</div>
-                    <div className='divDescription'>
-                      { item.item.description}
-                    </div>
-                </div>
-              </>
-            
+              </>            
     }
     else
       body = <div>Id de producto incorrecto.</div>
