@@ -22,7 +22,6 @@ export const searchItems = createAsyncThunk(
     console.log("Redux searching: " + value);
     const response = await fetch('http://localhost:8081/api/items?q=' + value)
     const results = await response.json();
-
     return results;
   }
 )
