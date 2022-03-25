@@ -1,41 +1,24 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   getItem,
   selectItem,
-  meliSlice,
-  status
 } from '../features/meli/meliSlice';
 import './ItemDetail.css';
 //import './App.css';
 
 export function ItemDetails() {
-  const stat = useSelector(status);
-  const dispatch = useDispatch();
-  const { id } = useParams();
-
-  //dispatch(getItem('MLA1114508271'));
-  useEffect(() => {
-
-    //dispatch(productActions.setActiveProduct(productId));
-    //dispatch(meliSlice.actions.setActiveProduct(id));
-    console.log("Preparando");
-    dispatch(getItem(id)); 
-    console.log("Searching: " + id);
-    
-  }, [id]);
-
+  
   const item = useSelector(selectItem);
-  console.log(item);
   item ? console.log(item.item.title) : console.log("Nothing");
 
   const title = item ? item.item.title : "Nothing"; 
-  var body="Something";
+  var body;
   if( item ) {
     console.log(item.item);
     body = <div className='container'>
-
+              {/* Item Details
+              { title } */}
               <div>
                 Detalles Categorias
               </div>
@@ -66,9 +49,9 @@ export function ItemDetails() {
             </div>
   }
   else
-    body = <div>Id de producto incorrecto.</div>
+    body = <div>Nothing to Show</div>
   return (
-    body 
+    body
   );
 }
 

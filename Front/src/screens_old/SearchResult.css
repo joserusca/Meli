@@ -1,0 +1,23 @@
+.productsContainer {
+    display: flex;
+    align-self: center;   
+    align-items: flex-start;
+    flex-direction: column; 
+    width: 100%;
+    background-color: white;
+}
+
+.productsResults {
+    display: flex;
+    align-self: center;      
+    justify-content: center;
+    flex-direction: column;
+    width: 75%;
+}
+
+.productsCategories {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}

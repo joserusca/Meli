@@ -4,9 +4,16 @@ import { ItemDetails } from './screens/ItemDetails';
 import { SearchResult } from './screens/SearchResult';
 import { useSelector, useDispatch } from 'react-redux';
 import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useParams
+} from "react-router-dom";
+import {
   getItem,
+  searchItems,
   selectItem,
-  status
 } from './features/meli/meliSlice';
 import './App.css';
 
@@ -14,51 +21,38 @@ function App() {
   // const dispatch = useDispatch();
   // const item = useSelector(selectItem);
   // item ? console.log(item.item.title) : console.log("Nothing");
-  const stat = useSelector(status);
 
-  let body;
-  // if(window.location.pathname.startsWith('/items/')) {
-  //   console.log(window.location.pathname);
-  //   const regular = "/items/(.*)$";
-  //   const match = window.location.pathname.match(regular);
-  //   console.log(" -> " + match[1]);
-  //   console.log(" ==== " + item);
-  //   //console.log(" => " + item ? item.item.id : "Nothing");
-  //   if(item === null || item.item.id!==match[1])
-  //   {  
-  //       console.log("Buscando item.");
-  //       dispatch(getItem(match[1]));
-  //   }
-  //   //MLA1114508271
-  //   //dispatch(getItem('MLA1114508271'));
-  //   body = <ItemDetails/>
-  // }
-  // else if(window.location.pathname.startsWith('/items?search=')) {
-  //   const regular = "\/items\?search=(.*)$";
-  //   const match = window.location.pathname.match(regular);
-  //   console.log(match);
-  //   body = <SearchResult/>
-  // }    
-  // else 
-  //   body = <></>
-  body = <SearchResult/>;
+
   return (
-    <div className="App">
-        Status API: {stat}
-        <SearchBox></SearchBox>
+    // <div className="App">
+      
+    //     <SearchBox></SearchBox>
 
-      <div className='App-body'>        
-        {
-          body
-        }
-        {/* {
-          window.location.pathname
-        }
-        {
-          window.localStorage.searchParams
-        } */}
-      </div>
+    //   <div className='App-body'>        
+    //     {
+    //       body
+    //     }
+    //     {/* {
+    //       window.location.pathname
+    //     }
+    //     {
+    //       window.localStorage.searchParams
+    //     } */}
+    //   </div>
+    // </div>
+    <div className="App">
+      <SearchBox></SearchBox>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<SearchBox/>}/> 
+          <Route path="/items" element={<SearchResult/>}>
+            <Route path="/items/:id" element={<ItemDetails/>}/>
+          </Route>
+          </Routes>
+      </Router>
     </div>
+
+
   );
 }
 

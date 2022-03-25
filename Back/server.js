@@ -126,7 +126,7 @@ async function getItem(id) {
   
   var response = await fetch('https://api.mercadolibre.com/items/' + id)
   var item = await response.json();
-  
+  console.log("Requesting Product Id: " + id);
   return item;
 }
 
@@ -134,12 +134,12 @@ async function getDescription(id) {
   
   var response = await fetch('https://api.mercadolibre.com/items/' + id + '/description')
   var item = await response.json();
-  
+  console.log("Requesting Product Descripton: " + id);
   return item;
 }
 
 async function searchItems(query) {
-  var response = await fetch('https://api.mercadolibre.com/sites/MLA/search?q=' + query)
+  var response = await fetch('https://api.mercadolibre.com/sites/MLA/search?q=' + query)  
   var data = await response.json();
   var result = {author: {
     name: 'Jose',
@@ -163,6 +163,9 @@ async function searchItems(query) {
       }
   });
   result.items = items;
+
+  console.log("Requesting Search: " + query);
+  console.log("Total Results: = " + items.length);
   return result;  
 }
 

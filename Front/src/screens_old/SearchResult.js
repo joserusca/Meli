@@ -1,33 +1,13 @@
-import React, { useEffect } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {  
   status,
   searchItems,
-  searchResult,
-  getItem
+  searchResult
 } from '../features/meli/meliSlice';
 import ProductCard from '../components/ProductCard';
 import './SearchResult.css';
-
 export function SearchResult() {
-  const stat = useSelector(status);
-  const dispatch = useDispatch();
-  const [searchParams] = useSearchParams();
-  const query = searchParams.get("q");
-  
-  //dispatch(getItem('MLA1114508271'));
-  useEffect(() => {
-
-    //dispatch(productActions.setActiveProduct(productId));
-    //dispatch(meliSlice.actions.setActiveProduct(id));
-    
-    console.log(query);
-    console.log("Preparando");
-    dispatch(searchItems(query)); 
-    console.log("Searching: " + query);
-    
-  }, [query]);
 
   const result = useSelector(searchResult);
   //console.log("Resultados useSelector: " + result);

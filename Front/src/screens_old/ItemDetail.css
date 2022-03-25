@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    align-self: center;   
+    flex-direction: column; 
+    width: 75%;
+}
+
+.Picture {
+    width:  680px;
+}
+
+.divPicture {
+    flex: 3
+}
+
+.divInfo {
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.buyBtn {
+    width: 100%;
+    background-color: #3483FA;
+    padding: 10px;
+    color: white;
+}
+
+.divAmount {
+    font-size: 46px;
+}
+
+.divCondition {
+    font-size: 14px;
+}
+
+.divTitle {
+    font-size: 24px;
+}
+
+.divDescription {
+    font-size: 16px;
+    text-align: left;    
+}
+
+.divDescTittle {
+    font-size: 24px;
+}
+
+.itemInfo {
+    display: flex;
+    flex-direction: row;
+}
+
+.descriptionContainer {    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
